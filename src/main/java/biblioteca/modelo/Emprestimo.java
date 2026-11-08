@@ -1,0 +1,49 @@
+package biblioteca.modelo;
+
+import java.time.LocalDate;
+import java.util.Objects;
+import java.util.Optional;
+
+public class Emprestimo {
+    private int id;
+    private Livro livro;
+    private Usuario usuario;
+    private LocalDate dataEmprestimo;
+    private LocalDate dataPrevistaDevolucao;
+
+
+    public Emprestimo(Livro livro, Usuario usuario, LocalDate dataEmprestimo, LocalDate dataPrevistaDevolucao) {
+        if(livro.titulo().isEmpty()|| dataEmprestimo == null || dataPrevistaDevolucao == null) throw new IllegalArgumentException("Valores invalido");
+        this.livro = livro;
+        this.usuario = usuario;
+        this.dataEmprestimo = dataEmprestimo;
+        this.dataPrevistaDevolucao = dataPrevistaDevolucao;
+    }
+
+    public Optional<LocalDate>  getDataDevolucao() {
+        return Optional.ofNullable(this.dataPrevistaDevolucao);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Emprestimo that = (Emprestimo) o;
+        return Objects.equals(livro.id(), that.livro.id());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(livro.id());
+    }
+}
