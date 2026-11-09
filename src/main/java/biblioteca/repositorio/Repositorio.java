@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface Repositorio<T,ID> {
-    T salvar(ID id,T item);
+    T salvar(T item);
     Optional<T> buscarPorId(ID id);
     List<T> listarTodos();
     void remover(ID id);

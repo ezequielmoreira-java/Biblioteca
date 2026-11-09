@@ -8,6 +8,7 @@ public class Usuario {
     private String nome;
     private String email;
     private LocalDate dataNasc;
+    private boolean multaPedente;
 
     public Usuario(String nome, String email, LocalDate dataNasc) {
         if(nome == null || nome.isEmpty() || email == null || email.isEmpty() || dataNasc == null || dataNasc.getYear() < 0){
@@ -17,5 +18,21 @@ public class Usuario {
         this.nome = nome;
         this.email = email;
         this.dataNasc = dataNasc;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public LocalDate getDataNasc() {
+        return dataNasc;
+    }
+
+    public int getId() {
+        return id;
     }
 }

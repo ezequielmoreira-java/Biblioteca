@@ -13,27 +13,28 @@ public class Emprestimo {
 
 
     public Emprestimo(Livro livro, Usuario usuario, LocalDate dataEmprestimo, LocalDate dataPrevistaDevolucao) {
-        if(livro.titulo().isEmpty()|| dataEmprestimo == null || dataPrevistaDevolucao == null) throw new IllegalArgumentException("Valores invalido");
+        if (livro.titulo().isEmpty() || dataEmprestimo == null || dataPrevistaDevolucao == null)
+            throw new IllegalArgumentException("Valores invalido");
         this.livro = livro;
         this.usuario = usuario;
         this.dataEmprestimo = dataEmprestimo;
         this.dataPrevistaDevolucao = dataPrevistaDevolucao;
     }
 
-    public Optional<LocalDate>  getDataDevolucao() {
+    public Optional<LocalDate> getDataDevolucao() {
         return Optional.ofNullable(this.dataPrevistaDevolucao);
     }
+    public boolean estaAtivo(){
+        return getDataDevolucao().isEmpty();
+    }
 
+    public Livro getLivro() {
+        return livro;
+    }
 
-
-
-
-
-
-
-
-
-
+    public Usuario getUsuario() {
+        return usuario;
+    }
 
     @Override
     public boolean equals(Object o) {
