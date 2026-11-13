@@ -12,9 +12,9 @@ public class Emprestimo {
     private LocalDate dataPrevistaDevolucao;
 
 
-    public Emprestimo(Livro livro, Usuario usuario, LocalDate dataEmprestimo, LocalDate dataPrevistaDevolucao) {
-        if (livro.titulo().isEmpty() || dataEmprestimo == null || dataPrevistaDevolucao == null)
-            throw new IllegalArgumentException("Valores invalido");
+    public Emprestimo(Livro livro, Usuario usuario, LocalDate dataEmprestimo, LocalDate dataPrevistaDevolucao, int id) {
+        if (livro.titulo().isEmpty() || dataEmprestimo == null || dataPrevistaDevolucao == null|| id < 0) throw new IllegalArgumentException("Valores invalido");
+        this.id = id;
         this.livro = livro;
         this.usuario = usuario;
         this.dataEmprestimo = dataEmprestimo;
@@ -36,6 +36,10 @@ public class Emprestimo {
         return usuario;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -47,4 +51,6 @@ public class Emprestimo {
     public int hashCode() {
         return Objects.hashCode(livro.id());
     }
+
+
 }

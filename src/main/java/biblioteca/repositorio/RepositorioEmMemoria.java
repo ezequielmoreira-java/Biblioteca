@@ -30,7 +30,7 @@ public class RepositorioEmMemoria<T, ID> implements Repositorio<T, ID> {
     }
 
     @Override
-    public void remover(ID id) {
-        armazenamento.remove(id);
+    public Optional<T> remover(ID id) {
+        return Optional.ofNullable(armazenamento.remove(id));
     }
 }

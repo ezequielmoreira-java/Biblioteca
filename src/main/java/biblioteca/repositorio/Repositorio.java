@@ -7,5 +7,5 @@ public interface Repositorio<T,ID> {
     T salvar(T item);
     Optional<T> buscarPorId(ID id);
     List<T> listarTodos();
-    void remover(ID id);
+    Optional<T> remover(ID id);
 }
